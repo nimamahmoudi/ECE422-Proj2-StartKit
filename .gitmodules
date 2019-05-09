@@ -1,0 +1,3 @@
+[submodule "ddsl_load_tester"]
+	path = ddsl_load_tester
+	url = https://github.com/DDSystemLab/ddsl_load_tester
