@@ -74,5 +74,26 @@ Initial steps for accomplishing your project:
     ```bash
     $ python sequence.py
     ```
+
+    The workload used in this sequence is generated using the following function:
+
+    ```python
+    import numpy as np
+    def get_user_count(mult=1):
+        t = np.arange(0,5,1/6)
+        sine_min = 8
+        sine_max = 12
+        user_count1 = ((sine_max - sine_min)/2) * (np.sin(2 * np.pi * t / 5) + 1) + sine_min
+
+        t = np.arange(0,4,1/6)
+        sine_min = 1
+        sine_max = 19
+        user_count2 = ((sine_max - sine_min)/2) * (np.sin(2 * np.pi * t / 5) + 1) + sine_min
+
+        user_count = list(user_count1) + list(user_count2)
+        user_count = [int(round(i*mult)) for i in user_count]
+        user_count = list(range(1,user_count[0])) + user_count + ([1]*6)
+        return user_count
+    ```
     
  Good Luck!
