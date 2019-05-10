@@ -87,7 +87,7 @@ results.head()
 res = results
 
 # Generate the report
-sla_max_95 = 1000
+sla_max_95 = 1200
 sla_max_avg = 800
 sla_max_median = 800
 
