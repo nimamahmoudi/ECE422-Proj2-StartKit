@@ -16,7 +16,7 @@ redis = Redis(host='redis', port=6379)
 def difficult_function():
     output = 1
     t0 = time.time()
-    difficulty = random.randint(1000000, 2000000)
+    difficulty = random.randint(200000, 400000)
     for i in range(difficulty):
         output = output * difficulty
         output = output / (difficulty - 1)

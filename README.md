@@ -3,7 +3,7 @@ ECE 422: Reliable and Secure Systems Design
 This repository provides the starter kit for the Reliability project. The `docker-images` folder
 contains the Dockerfile, a simple application in `Python` and a requirement file including dependencies for
 the application. This directory is for your information and reference as the image (simpleweb) has already been build 
-and pushed to [Docker Hub](https://hub.docker.com/r/henaras/simpleweb) repository.
+and pushed to [Docker Hub](https://hub.docker.com/r/ddsystemsl/simpleweb) repository.
 
 Following steps show how you can prepare the deployment environment on Cybera Cloud; briefly you need to a) provision 
 Virtual Machines (VMs) on Cybera b) install Docker on VMs c) create a Swarm cluster of at least two of 
@@ -56,7 +56,7 @@ Initial steps for accomplishing your project:
     ```
     1. You can open up a browser and go to `http://CLIENT_VM_IP:8089` to see the `locust` web interface. Set both the number of users and hatch rate to 1 and
        press the `Start Swarming` button.
-       Look at the charts for response time as they are being updated.
+       Look at the charts for response time as they are being updated. You should see a response time of about 500ms depending on your computation power.
     3. Generally, this client program creates a number of users that send requests to the server and after receiving 
         the response thinks for the amount of `think_time` and then send a new request.
         The `think_time` can be adjusted in the `locustfile.py`.
@@ -69,5 +69,11 @@ Initial steps for accomplishing your project:
     
 
 8. For more information on how to work with the load generator, go to the [load generator repository](https://github.com/DDSystemLab/ddsl_load_tester).
+
+9. Set the `hatch_rate` to 1 and use the following user_sequence to generate two sine waves:
+
+```python
+user_sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 11, 11, 12, 12, 12, 12, 12, 12, 11, 11, 11, 10, 10, 10, 9, 9, 9, 8, 8, 8, 8, 8, 8, 9, 9, 9, 10, 10, 12, 14, 15, 17, 18, 19, 19, 19, 19, 18, 17, 15, 14, 12, 10, 8, 6, 5, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+```
     
  Good Luck!

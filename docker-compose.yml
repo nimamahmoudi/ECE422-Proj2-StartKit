@@ -2,7 +2,9 @@ version: '3'
 
 services:
   web:
-    image: henaras/simpleweb:1
+    # image: henaras/simpleweb:1
+    # image: ddsystemsl/simpleweb:1
+    image: nimamahmoudi/simpleweb:1
     ports:
       - "8000:8000"
     deploy:
