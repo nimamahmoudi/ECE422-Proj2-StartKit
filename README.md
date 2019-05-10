@@ -51,19 +51,17 @@ Initial steps for accomplishing your project:
     response would think for one second, and then send another request. This cycle goes on as long as the client 
     program is running.
     ```bash
-    $ git clone https://github.com/DDSystemLab/ddsl_load_tester
-    $ cd ddsl_load_tester/examples
     $ locust --host=http://MASTER_NODE_IP:8000 -f locustfile.py
     ```
     1. You can open up a browser and go to `http://CLIENT_VM_IP:8089` to see the `locust` web interface. Set both the number of users and hatch rate to 1 and
        press the `Start Swarming` button.
        Look at the charts for response time as they are being updated. You should see a response time of about 500ms depending on your computation power.
-    3. Generally, this client program creates a number of users that send requests to the server and after receiving 
+    2. Generally, this client program creates a number of users that send requests to the server and after receiving 
         the response thinks for the amount of `think_time` and then send a new request.
         The `think_time` can be adjusted in the `locustfile.py`.
-    4. If you increase the number of users or decrease the think time, i.e. increasing the workload, the response 
+    3. If you increase the number of users or decrease the think time, i.e. increasing the workload, the response 
         time should increase.
-    5. **Important Note**: for development and testing purposes you may run the client program on your laptop 
+    4. **Important Note**: for development and testing purposes you may run the client program on your laptop 
     which is a reasonable strategy. However, running the client program for a long time on your laptop might appear as 
     a DoS attack to Cybera firewall which may result in unexpected outcome for your VMs. Therefore, try to run the 
     http client program on the `Client_VM`.
