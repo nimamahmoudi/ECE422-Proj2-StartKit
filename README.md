@@ -70,10 +70,9 @@ Initial steps for accomplishing your project:
 
 8. For more information on how to work with the load generator, go to the [load generator repository](https://github.com/DDSystemLab/ddsl_load_tester).
 
-9. Set the `hatch_rate` to 1 and use the following user_sequence to generate two sine waves:
-
-```python
-user_sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 11, 11, 12, 12, 12, 12, 12, 12, 11, 11, 11, 10, 10, 10, 9, 9, 9, 8, 8, 8, 8, 8, 8, 9, 9, 9, 10, 10, 12, 14, 15, 17, 18, 19, 19, 19, 19, 18, 17, 15, 14, 12, 10, 8, 6, 5, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-```
+9. Set the `hatch_rate` to 1 and use the user_sequence in `sequence.py` to generate two sine waves. Run the `sequence.py` to see the example output of running the sequence.
+    ```bash
+    $ python sequence.py
+    ```
     
  Good Luck!

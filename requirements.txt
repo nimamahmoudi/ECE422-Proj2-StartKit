@@ -1,0 +1,7 @@
+locust
+requests
+numpy
+pandas
+matplotlib
+jupyter
+tqdm
