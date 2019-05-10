@@ -51,8 +51,8 @@ Initial steps for accomplishing your project:
     $ pip install requirements.txt
     ```
 
-7.  Then follow the instructions in the  with one user who sends a request, wait for response, when received the 
-    response would think for one second, and then send another request. This cycle goes on as long as the client 
+7.  Then follow the instructions in the `ddsl_load_tester` folder with one user who sends a request, waits for response, when received the 
+    response would think for some time, and then send another request. This cycle goes on as long as the client 
     program is running.
     ```bash
     $ ddsl_locust --host=http://MASTER_NODE_IP:8000 -f locustfile.py
