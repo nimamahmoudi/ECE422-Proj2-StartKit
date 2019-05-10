@@ -41,9 +41,10 @@ Initial steps for accomplishing your project:
 
 6.  Now, login into your `Client_VM` and clone the http client repository. Run the following command to install the requirements for the load generator:
     ```bash
-    $ git clone https://github.com/DDSystemLab/ddsl_load_tester
+    $ git clone https://github.com/nimamahmoudi/ECE422-Proj2-StartKit
+    $ cd ECE422-Proj2-StartKit
     $ sudo apt -y install python-pip
-    $ pip install ddsl_load_tester/requirements.txt
+    $ pip install requirements.txt
     ```
 
 7.  Then follow the instructions in the  with one user who sends a request, wait for response, when received the 
@@ -68,9 +69,10 @@ Initial steps for accomplishing your project:
     http client program on the `Client_VM`.
     
 
-8. For more information on how to work with the load generator, go to the [load generator repository](https://github.com/DDSystemLab/ddsl_load_tester).
+8. For more information on how to work with the load generator, go to the [load generator repository](./ddsl_load_tester).
 
 9. Set the `hatch_rate` to 1 and use the user_sequence in `sequence.py` to generate two sine waves. Run the `sequence.py` to see the example output of running the sequence.
+    Note that you have to update the function `get_docker_replica_count()` to get the current replica count according to your structure and application name.
     ```bash
     $ python sequence.py
     ```
@@ -95,5 +97,19 @@ Initial steps for accomplishing your project:
         user_count = list(range(1,user_count[0])) + user_count + ([1]*6)
         return user_count
     ```
+
+    This script will generate a report like this:
+    ```
+    Overall Results:
+    =================================
+    95th percentile Response Time violations: 7
+    median Response Time violations: 4
+    average Response Time violations: 7
+    average replica count (cost): 1.0
+    ```
+
+    And a figure like this which will be store in results folder (without auto-scaling):
+
+    ![Sample](./figures/sample_result.png)
     
  Good Luck!
