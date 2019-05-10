@@ -61,7 +61,9 @@ for i in tqdm(range(len(user_sequence))):
     lt.change_count(user_count)
     
     # decrement the loop processing time to have an accurate time for the loop
-    time.sleep(loop_time_in_secs - loop_timer.toc())
+    sleep_time = loop_time_in_secs - loop_timer.toc()
+    if sleep_time > 0:
+        time.sleep(sleep_time)
     
     loop_timer.tic()
     
@@ -90,7 +92,7 @@ sla_max_avg = 800
 sla_max_median = 800
 
 sla_95_count = sum(res['current_response_time_percentile_95'] > sla_max_95)
-sla_avg_count = sum(res['avg_response_time'] > sla_max_avg)
+sla_avg_count = sum(res['current_response_time_average'] > sla_max_avg)
 sla_med_count = sum(res['current_response_time_percentile_50'] > sla_max_median)
 avg_replica = np.mean(res['custom_replica'])
 
@@ -107,11 +109,11 @@ import matplotlib.pyplot as plt
 
 plt.figure(figsize=(8,18))
 plt.subplot(411)
-plt.plot(res['elapsed_min'], res['min_response_time'], label='min_response_time')
+plt.plot(res['elapsed_min'], res['current_min_response_time'], label='current_min_response_time')
 plt.plot(res['elapsed_min'], res['current_response_time_percentile_50'], label='median_response_time')
-plt.plot(res['elapsed_min'], res['avg_response_time'], label='avg_response_time')
+plt.plot(res['elapsed_min'], res['current_response_time_average'], label='avg_response_time')
 plt.plot(res['elapsed_min'], res['current_response_time_percentile_95'], label='95th percentile')
-plt.plot(res['elapsed_min'], res['max_response_time'], label='max_response_time')
+plt.plot(res['elapsed_min'], res['current_max_response_time'], label='current_max_response_time')
 
 plt.xlabel('Time (minutes)')
 plt.ylabel('Response Time (ms)')

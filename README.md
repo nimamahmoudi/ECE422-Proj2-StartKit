@@ -44,6 +44,10 @@ Initial steps for accomplishing your project:
     $ git clone https://github.com/nimamahmoudi/ECE422-Proj2-StartKit
     $ cd ECE422-Proj2-StartKit
     $ sudo apt -y install python-pip
+    $ # Make sure locust and locustio is not installed:
+    $ # pip uninstall locust locustio
+    $ # This should only show ddsl_locustio:
+    $ pip freeze | grep locust
     $ pip install requirements.txt
     ```
 
@@ -51,7 +55,7 @@ Initial steps for accomplishing your project:
     response would think for one second, and then send another request. This cycle goes on as long as the client 
     program is running.
     ```bash
-    $ locust --host=http://MASTER_NODE_IP:8000 -f locustfile.py
+    $ ddsl_locust --host=http://MASTER_NODE_IP:8000 -f locustfile.py
     ```
     1. You can open up a browser and go to `http://CLIENT_VM_IP:8089` to see the `locust` web interface. Set both the number of users and hatch rate to 1 and
        press the `Start Swarming` button.
@@ -73,6 +77,24 @@ Initial steps for accomplishing your project:
     Note that you have to update the function `get_docker_replica_count()` to get the current replica count according to your structure and application name.
     ```bash
     $ python sequence.py
+    ```
+
+    To use the docker python sdk and the `get_docker_replica_count()` function provided, you can use `docker-machine` to connect the client VM to the swarm manager VM:
+    ```bash
+    $ # install docker-machine
+    $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
+        curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+        sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+    $ docker-machine create \
+        --driver generic \
+        --generic-ip-address=SWARM_MASTER_IP \
+        --generic-ssh-key ~/.ssh/id_rsa \
+        --generic-ssh-user ubuntu \
+        savi-ds
+    $ eval $(docker-machine env savi-ds)
+    $ # check that you have connected to the remote docker machine
+    $ # This should be executed on the remote VM
+    $ docker ps
     ```
 
     The workload used in this sequence is generated using the following function:

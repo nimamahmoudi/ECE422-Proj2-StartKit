@@ -1,4 +1,4 @@
-locust
+ddsl-locustio
 requests
 numpy
 pandas
